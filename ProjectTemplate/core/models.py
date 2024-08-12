@@ -13,6 +13,16 @@ class NameModel(models.Model):
     class Meta:
         abstract = True
 
+class SoftDeleteable(models.Model):
+    is_deleted = models.BooleanField(default=False)
+
+    def delete(self, *args, **kwargs):
+        self.is_deleted = True,
+        self.save()
+
+    class Meta:
+        abstract = True
+
 class BaseModel(TimeStampedModel, NameModel):
     class Meta:
         abstract = True
