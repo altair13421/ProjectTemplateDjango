@@ -56,6 +56,7 @@ class CoreViewSet(viewsets.ModelViewSet):
             return cls.model
         return cls.get_serializer_class().get_model()  # type: ignore
 
+    # Need to Change This, And Generalize this.... for Base User.
     def get_user(self, decoded):
         user_id = decoded.get("user_id", None)
         user_type = decoded.get("user_type", None)
